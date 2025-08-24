@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * |      |      |      |      |      |      |-------.    ,-------| RIGHT|  UP  | DOWN | LEFT |      |  {[  |
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-     * |LShift|  <>  |      |      |      |      |-------|    |-------|      |      |  ,;  |  .:  |  -_  |LShift|
+     * |LShift|      |      |      |      |      |-------|    |-------|      |      |  ,;  |  .:  |  -_  |LShift|
      * `-----------------------------------------/       /     \      \-----------------------------------------'
      *            | LCtrl|      |      |LCtrl | /LOWER  /       \RAISE \  |Space | RAlt |  Del |      |
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_GRV , XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, KC_MINS, KC_EQL, KC_DEL,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, KC_LBRC, KC_RBRC, KC_NUHS,
             KC_LSFT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   KC_LEFT, KC_DOWN, KC_UP, KC_RGHT, XXXXXXX, KC_QUOT,
-            KC_LCTL, KC_NUBS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  KC_SLSH, KC_LSFT,
+            KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX, KC_COMM, KC_DOT,  KC_SLSH, KC_LSFT,
                               KC_CAPS, XXXXXXX, XXXXXXX, KC_LCTL, MO(_LOWER),   MO(_RAISE), KC_SPC, KC_RALT, KC_DEL, XXXXXXX
             ),
 
@@ -79,7 +79,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * |      |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-     * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
+     * |LShift|  <>  |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
      *            |      |      |      |LCtrl | /LOWER  /       \RAISE \  |Space |      |      |      |
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_F1  , KC_F2  , KC_F3  , KC_F4  , KC_F5  , KC_F6  ,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
             KC_F7  , KC_F8  , KC_F9  , KC_F10 , KC_F11 , KC_F12 ,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            KC_LSFT, KC_NUBS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                               XXXXXXX, XXXXXXX, XXXXXXX, KC_LCTL, MO(_LOWER),   MO(_RAISE), KC_SPC, XXXXXXX, XXXXXXX, XXXXXXX
             ),
 
@@ -133,7 +133,7 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
 }
 
-Imagen de 128px x 32px x 72ppp
+// Imagen de 128px x 32px x 72ppp
 #ifdef OLED_ENABLE
 static const char PROGMEM yka_logo[] = {
     0x00, 0x80, 0xC0, 0xC0, 0xC0, 0xC0,
