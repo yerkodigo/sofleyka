@@ -1,6 +1,13 @@
 # Sofle Keyboard - Configuración Sofleyka
 
-Configuración personalizada para Sofle v1 con layout QWERTY español latinoamericano, optimizada para desarrollo de software con Home Row Mods bilaterales y símbolos de programación accesibles.
+Configuración personalizada para Sofle v1 con layout QWERTY español latinoamericano, optimizada para desarrollo de software con Home Row Mods bilaterales, símbolos de programación accesibles y controles multimedia integrados.
+
+**Última versión: v3**
+
+**Optimizaciones v3** (más reciente):
+- Thumb cluster unificado en todas las capas para consistencia
+- Controles multimedia en ADJUST (reproducción y volumen en home row)
+- Método de flasheo optimizado vía QMK MSYS
 
 **Optimizaciones v2**:
 - Símbolos de programación reorganizados en fila 1 de RAISE (más accesible)
@@ -108,7 +115,7 @@ Activación: Mantener tecla RAISE (pulgar derecho)
 
 Símbolos reorganizados específicamente para facilitar programación y acceso a combinaciones frecuentes.
 
-### ADJUST - Sistema
+### ADJUST - Sistema y Multimedia
 
 Activación: LOWER + RAISE simultáneamente (tri-layer)
 
@@ -118,17 +125,31 @@ Activación: LOWER + RAISE simultáneamente (tri-layer)
 ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┼─────┤
 │     │     │     │     │     │     │             │     │     │     │     │     │     │
 ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┼─────┤
-│CAPS │     │     │     │     │     │             │     │     │     │     │     │     │
+│CAPS │ ◄◄  │ ►/▌▌│  ■  │ ►►  │     │             │Vol- │Vol+ │Mute │     │     │     │
 ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┼─────┤
 │     │     │     │     │     │     │             │     │     │     │     │     │     │
 └─────┴─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┘
-            │     │     │     │     │█████│ │█████│     │     │     │     │
+            │CTRL │ WIN │ ALT │SHIFT│█████│ │█████│ SPC │ ALT │ WIN │CTRL │
             └─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┘
 ```
 
+**Funciones de sistema:**
 - **RESET** (ESC): Ingreso al bootloader para flasheo
 - **CAPS**: Activar/desactivar Caps Lock
 - **DEBUG**: Toggle debug mode
+
+**Controles multimedia (home row):**
+
+Mano izquierda:
+- **S** (◄◄): Canción anterior
+- **D** (►/▌▌): Play/Pause
+- **F** (■): Stop
+- **G** (►►): Canción siguiente
+
+Mano derecha:
+- **H**: Volumen -
+- **J**: Volumen +
+- **K**: Mute (silenciar)
 
 ## Configuración de encoders
 
@@ -216,27 +237,65 @@ Gracias a la reorganización, estas combinaciones ahora son mucho más fáciles:
 
 ## Compilación y flasheo
 
-### Compilar firmware
+### Método recomendado: QMK MSYS (Windows)
+
+Este método es el más confiable para flashear el Sofle en Windows, evitando los problemas de comunicación serial que puede tener QMK Toolbox.
+
+#### Procedimiento completo
+
+**1. Abrir QMK MSYS**
+   - Buscar "QMK MSYS" en el menú de Windows
+   - Abrir la terminal
+
+**2. Ejecutar comando de flasheo**
+```bash
+qmk flash -kb sofle/rev1 -km sofleyka
+```
+
+**3. Flashear lado izquierdo**
+   - Conectar el lado **izquierdo** del teclado al USB
+   - Cuando la terminal muestre "Detecting USB port, reset your controller now..."
+   - Presionar el **botón reset 2 veces rápidamente** (< 1 segundo entre presiones)
+   - El firmware comenzará a flashearse automáticamente
+   - Esperar a que termine (verás "Flash complete")
+
+**4. Flashear lado derecho**
+   - Desconectar el lado izquierdo
+   - Conectar el lado **derecho** del teclado al USB
+   - **Volver a ejecutar** el comando:
+     ```bash
+     qmk flash -kb sofle/rev1 -km sofleyka
+     ```
+   - Presionar el **botón reset 2 veces rápidamente**
+   - Esperar a que termine
+
+**5. Verificar**
+   - Conectar el cable TRRS entre ambas mitades
+   - Conectar cualquier lado al USB
+   - Probar que ambos lados funcionan correctamente
+
+### Solo compilar (sin flashear)
+
+Si solo quieres compilar sin flashear:
 
 ```bash
 qmk compile -kb sofle/rev1 -km sofleyka
 ```
 
-### Flashear con QMK Toolbox
+El archivo `.hex` se generará en `.build/sofle_rev1_sofleyka.hex`
 
-1. Abrir QMK Toolbox
-2. Cargar archivo `.hex` generado
-3. Seleccionar MCU: **atmega32u4**
-4. Activar opción "Auto-Flash"
-5. Ejecutar doble reset en el teclado
+### Métodos alternativos de ingreso al bootloader
 
-### Métodos de ingreso al bootloader
+Si el botón reset físico no funciona, puedes usar:
 
-- **Desde teclado**: LOWER + RAISE + ESC
-- **Físico**: Presionar botón reset dos veces rápidamente
-- **Hardware**: Hacer puente entre pines RST y GND
+- **Desde teclado**: LOWER + RAISE + ESC (si tienes firmware QMK ya flasheado)
+- **Hardware**: Hacer puente entre pines RST y GND en el Pro Micro
 
-**Nota**: El bootloader Caterina tiene ventana de ~8 segundos. El doble reset extiende este tiempo.
+### Notas importantes
+
+- **Bootloader Caterina**: Tiene una ventana de ~8 segundos. El doble reset extiende este tiempo.
+- **Ambos lados**: Es necesario flashear AMBOS lados del teclado para que la configuración funcione correctamente.
+- **Problemas con QMK Toolbox**: Si QMK Toolbox da errores de comunicación serial, usa el método de QMK MSYS descrito arriba.
 
 ## Configuración de timing
 
@@ -316,23 +375,34 @@ El keymap tiene las siguientes características activas (definidas en `rules.mk`
 - Esperar velocidad normal durante primeras semanas
 - Subutilizar encoders. Son herramientas eficientes para flujos de trabajo
 
-## Cambios recientes (Optimización v2)
+## Cambios recientes
 
-### ✅ Completado
+### Optimización v3 ✅
 
-- **Reorganización de símbolos en RAISE**: Símbolos de programación ahora en posiciones más accesibles (fila 1)
+**Consistencia de thumb cluster:**
+- **Fila inferior unificada**: Todas las capas (BASE, LOWER, RAISE, ADJUST) ahora tienen la misma configuración de teclas en el thumb cluster
+- **Beneficio**: Acceso consistente a modificadores (Ctrl, Win, Alt, Shift) sin importar en qué capa estés
+
+**Controles multimedia en ADJUST:**
+- **Home row multimedia**: Controles de música en teclas S, D, F, G (mano izquierda) para reproducción
+- **Control de volumen**: Teclas H, J, K (mano derecha) para volumen y mute
+- **Acceso rápido**: LOWER + RAISE activa controles de sistema y multimedia simultáneamente
+
+### Optimización v2 ✅
+
+**Reorganización de símbolos:**
+- **Símbolos en RAISE optimizados**: Símbolos de programación ahora en posiciones más accesibles (fila 1)
 - **Modificadores físicos en pulgar**: Shift agregado al cluster de pulgar izquierdo para combinaciones más fáciles
 - **Eliminación de duplicados**: Números removidos de RAISE (ya están en BASE)
 - **Backslash y backtick visibles**: Ahora en fila 1, fáciles de encontrar
 
-### Resultado
-
-**Antes**: Shift+Alt+Plus requería 4 acciones complejas (F hold + S hold + RAISE + Plus)
-**Ahora**: Shift+Alt+Plus con pulgares (Shift thumb + Alt thumb + RAISE thumb + Plus) - mucho más ergonómico
+**Resultado:**
+- Antes: Shift+Alt+Plus requería 4 acciones complejas (F hold + S hold + RAISE + Plus)
+- Ahora: Shift+Alt+Plus con pulgares (Shift thumb + Alt thumb + RAISE thumb + Plus) - mucho más ergonómico
 
 ## Mejoras futuras
 
-- Implementación de macros en capa ADJUST
+- Implementación de macros personalizados en capa ADJUST
 - Evaluación de capa numpad dedicada
 - Posible adición de combos para símbolos muy frecuentes
 

@@ -64,7 +64,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
      * |      |      |      |      |      |      |-------|    |-------|      | Mute | Vol- | Vol+ |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            |      |      |      |      | /LOWER  /       \RAISE \  |      |      |      |      |
+     *            | Ctrl | Win  | Alt  |Shift | /LOWER  /       \RAISE \  |Space | RAlt | Win  | RCtrl|
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -73,7 +73,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             XXXXXXX, KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  XXXXXXX,
             XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,
-                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+                              KC_LCTL, KC_LGUI, KC_LALT, KC_LSFT, _______, _______, KC_SPC,  KC_RALT, KC_RGUI, KC_RCTL
             ),
 
     /* RAISE - Símbolos optimizados para programación
@@ -86,7 +86,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
      * |      | {AG} | }AG} | \AltG| ^AltG|  ?   |-------|    |-------|   1  |   2  |   3  |   4  |   5  |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            |      |      |      |      | /LOWER  /       \RAISE \  |      |      |      |      |
+     *            | Ctrl | Win  | Alt  |Shift | /LOWER  /       \RAISE \  |Space | RAlt | Win  | RCtrl|
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -95,29 +95,29 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             XXXXXXX, RALT(KC_LBRC), RALT(KC_NUHS), KC_QUOT, KC_NUHS, S(KC_0),       KC_RBRC, KC_NUBS, S(KC_NUBS), KC_MINS, KC_LBRC, RALT(KC_RBRC),
             XXXXXXX, KC_NUBS, S(KC_NUBS), S(KC_8), S(KC_9), S(KC_RBRC),             KC_LBRC, S(KC_2), KC_EQL, S(KC_EQL), S(KC_LBRC), KC_BSPC,
             XXXXXXX, RALT(KC_LBRC), RALT(KC_RBRC), RALT(KC_QUOT), RALT(KC_NUHS), S(KC_MINS), XXXXXXX, XXXXXXX, KC_1, KC_2, KC_3, KC_4, KC_5, XXXXXXX,
-                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+                              KC_LCTL, KC_LGUI, KC_LALT, KC_LSFT, _______, _______, KC_SPC,  KC_RALT, KC_RGUI, KC_RCTL
             ),
 
-    /* ADJUST - Sistema (activada con LOWER + RAISE)
+    /* ADJUST - Sistema y Multimedia (activada con LOWER + RAISE)
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * | Reset|      |      |      |      |      |                    |      |      |      |      |      | Debug|
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * | Caps |      |      |      |      |      |-------.    ,-------|      |      |      |      |      |      |
+     * | Caps | Prev | Play | Stop | Next |      |-------.    ,-------| Vol- | Vol+ | Mute |      |      |      |
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
      * |      |      |      |      |      |      |-------|    |-------|      |      |      |      |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            |      |      |      |      | /LOWER  /       \RAISE \  |      |      |      |      |
+     *            | Ctrl | Win  | Alt  |Shift | /LOWER  /       \RAISE \  |Space | RAlt | Win  | RCtrl|
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
     [_ADJUST] = LAYOUT(
             QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DB_TOGG,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-            KC_CAPS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+            KC_CAPS, KC_MPRV, KC_MPLY, KC_MSTP, KC_MNXT, XXXXXXX,                   KC_VOLD, KC_VOLU, KC_MUTE, XXXXXXX, XXXXXXX, XXXXXXX,
             XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                              _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+                              KC_LCTL, KC_LGUI, KC_LALT, KC_LSFT, _______, _______, KC_SPC,  KC_RALT, KC_RGUI, KC_RCTL
             ),
 };
 
