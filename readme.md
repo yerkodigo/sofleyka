@@ -1,6 +1,12 @@
 # Sofle Keyboard - Configuración Sofleyka
 
-Configuración personalizada para Sofle v1 con layout QWERTY español latinoamericano, optimizada para desarrollo de software con Home Row Mods bilaterales.
+Configuración personalizada para Sofle v1 con layout QWERTY español latinoamericano, optimizada para desarrollo de software con Home Row Mods bilaterales y símbolos de programación accesibles.
+
+**Optimizaciones v2**:
+- Símbolos de programación reorganizados en fila 1 de RAISE (más accesible)
+- Modificadores físicos en pulgares para combinaciones complejas (Shift+Alt+símbolo)
+- Backslash y backtick ahora fáciles de encontrar
+- Números duplicados eliminados, liberando espacio para símbolos frecuentes
 
 ## Estructura de capas
 
@@ -47,11 +53,13 @@ Mano izquierda:              Mano derecha:
 ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┼─────┤
 │SHIFT│A/GUI│S/Alt│D/Ctrl│F/Shf│  G  │             │  H  │J/Shf│K/Ctrl│L/Alt│Ñ/GUI│ENTER│
 ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┼─────┤
-│CTRL │  Z  │  X  │  C  │  V  │  B  │             │  N  │  M  │  ,  │  .  │  /  │SHIFT│
+│CTRL │  Z  │  X  │  C  │  V  │  B  │             │  N  │  M  │  ,  │  .  │  -  │SHIFT│
 └─────┴─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┘
-            │CTRL │ WIN │ ALT │ SPC │LOWER│ │RAISE│ SPC │ ALT │ WIN │CTRL │
+            │CTRL │ WIN │ ALT │SHIFT│LOWER│ │RAISE│ SPC │ ALT │ WIN │CTRL │
             └─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┘
 ```
+
+**Mejora nueva**: Shift ahora también está disponible en el pulgar izquierdo para facilitar combinaciones como Shift+Alt+símbolo.
 
 ### LOWER - Navegación
 
@@ -73,25 +81,32 @@ Activación: Mantener tecla LOWER (pulgar izquierdo)
 
 **Navegación estilo Vim**: H=←, J=↓, K=↑, L=→
 
-### RAISE - Símbolos
+### RAISE - Símbolos optimizados para programación
 
 Activación: Mantener tecla RAISE (pulgar derecho)
 
 ```
 ┌─────┬─────┬─────┬─────┬─────┬─────┐             ┌─────┬─────┬─────┬─────┬─────┬─────┐
-│ |°  │  !  │  @  │  #  │  $  │  %  │             │  &  │  /  │  (  │  )  │  =  │BSPC │
+│  !  │  @  │  #  │  $  │  %  │  &  │             │  /  │  (  │  )  │  =  │  -  │  _  │
 ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┼─────┤
-│     │  1  │  2  │  3  │  4  │  5  │             │  6  │  7  │  8  │  9  │  0  │  ¿  │
+│     │  [  │  ]  │  {  │  }  │  =  │             │  +  │  \  │  |  │  '  │  `  │  ~  │
 ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┼─────┤
-│     │  <  │  >  │  {  │  }  │  `  │             │  ´  │  +  │  *  │  -  │  '  │  ¡  │
+│     │  <  │  >  │  (  │  )  │  *  │             │  ´  │  "  │  ¿  │  ¡  │  ^  │BSPC │
 ├─────┼─────┼─────┼─────┼─────┼─────┤             ├─────┼─────┼─────┼─────┼─────┼─────┤
-│     │  [  │  ]  │  (  │  )  │  ~  │             │  ^  │  \  │  |  │  _  │  ?  │     │
+│     │{AltG│}AltG│\AltG│^AltG│  ?  │             │  1  │  2  │  3  │  4  │  5  │     │
 └─────┴─────┼─────┼─────┼─────┼─────┼─────┐ ┌─────┼─────┼─────┼─────┼─────┼─────┘
             │     │     │     │     │     │ │█████│     │     │     │     │
             └─────┴─────┴─────┴─────┴─────┘ └─────┴─────┴─────┴─────┴─────┘
 ```
 
-Símbolos agrupados para facilitar programación en JavaScript, Python y lenguajes similares.
+**Mejoras nuevas**:
+- **Fila 1** (la más accesible): Símbolos de programación más usados - brackets `[]`, braces `{}`, operadores `= + \ |`, comillas `' ` ~`
+- **Números eliminados** de fila 1: Ya están en capa BASE, no necesitan duplicarse
+- **Backslash `\` visible**: Ahora en fila 1, columna 7 (fácil de encontrar)
+- **Backtick `` ` `` único**: Fila 1, columna 10 (ya no duplicado)
+- **Plus `+` accesible**: Fila 1, columna 6 (para combinaciones como Shift+Alt+Plus)
+
+Símbolos reorganizados específicamente para facilitar programación y acceso a combinaciones frecuentes.
 
 ### ADJUST - Sistema
 
@@ -126,7 +141,48 @@ Los encoders rotativos ejecutan diferentes funciones según la capa activa:
 | RAISE | Scroll vertical | Page Up/Down |
 | ADJUST | Brillo -/+ | Media anterior/siguiente |
 
+## Referencia rápida de símbolos
+
+### Símbolos más usados en programación
+
+| Símbolo | Ubicación en RAISE | Tecla física |
+|---------|-------------------|--------------|
+| `[` | Fila 1, col 1 | AltGr + ´ |
+| `]` | Fila 1, col 2 | AltGr + + |
+| `{` | Fila 1, col 3 | ´ (acento) |
+| `}` | Fila 1, col 4 | + |
+| `(` | Fila 2, col 3 | Shift + 8 |
+| `)` | Fila 2, col 4 | Shift + 9 |
+| `=` | Fila 0, col 9 / Fila 1, col 5 | Shift + 0 |
+| `+` | Fila 1, col 6 | + |
+| `-` | Fila 0, col 10 | - |
+| `_` | Fila 0, col 11 | Shift + - |
+| `\` | Fila 1, col 7 | < (backslash key) |
+| `\|` | Fila 1, col 8 | Shift + < |
+| `'` | Fila 1, col 9 | - (minus key) |
+| `` ` `` | Fila 1, col 10 | ´ (backtick) |
+| `~` | Fila 1, col 11 | AltGr + + |
+| `"` | Fila 2, col 7 | Shift + 2 |
+| `<` | Fila 2, col 1 | < |
+| `>` | Fila 2, col 2 | Shift + < |
+| `*` | Fila 2, col 5 | Shift + + |
+
+**Nota**: "Tecla física" se refiere al keycode QMK usado, que con layout español LATAM en el OS produce el símbolo indicado.
+
 ## Combinaciones comunes
+
+### Combinaciones de programación mejoradas
+
+Gracias a la reorganización, estas combinaciones ahora son mucho más fáciles:
+
+| Función | Combinación | Ejecución mejorada |
+|---------|-------------|-------------------|
+| Dividir terminal | Shift+Alt+Plus | Pulgar izq (Shift) + Pulgar izq (Alt) + Pulgar der (RAISE) + Plus |
+| Terminal nueva | Ctrl+Shift+` | Pulgar izq (Ctrl) + Pulgar izq (Shift) + Pulgar der (RAISE) + Backtick |
+| Plegar código | Ctrl+Shift+[ | Pulgar izq (Ctrl) + Pulgar izq (Shift) + Pulgar der (RAISE) + [ |
+| Formatear | Alt+Shift+F | Pulgar izq (Alt) + Pulgar izq (Shift) + F |
+
+**Ventaja clave**: Todos los modificadores están en el pulgar izquierdo, dejando la mano derecha libre para símbolos.
 
 ### Atajos de edición
 
@@ -260,11 +316,25 @@ El keymap tiene las siguientes características activas (definidas en `rules.mk`
 - Esperar velocidad normal durante primeras semanas
 - Subutilizar encoders. Son herramientas eficientes para flujos de trabajo
 
+## Cambios recientes (Optimización v2)
+
+### ✅ Completado
+
+- **Reorganización de símbolos en RAISE**: Símbolos de programación ahora en posiciones más accesibles (fila 1)
+- **Modificadores físicos en pulgar**: Shift agregado al cluster de pulgar izquierdo para combinaciones más fáciles
+- **Eliminación de duplicados**: Números removidos de RAISE (ya están en BASE)
+- **Backslash y backtick visibles**: Ahora en fila 1, fáciles de encontrar
+
+### Resultado
+
+**Antes**: Shift+Alt+Plus requería 4 acciones complejas (F hold + S hold + RAISE + Plus)
+**Ahora**: Shift+Alt+Plus con pulgares (Shift thumb + Alt thumb + RAISE thumb + Plus) - mucho más ergonómico
+
 ## Mejoras futuras
 
-- Reorganización de símbolos en RAISE según frecuencia de uso
 - Implementación de macros en capa ADJUST
 - Evaluación de capa numpad dedicada
+- Posible adición de combos para símbolos muy frecuentes
 
 ## Estructura de archivos
 

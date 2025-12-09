@@ -32,17 +32,17 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     /*
-     * BASE - QWERTY con Home Row Mods Bilaterales (GACS)
+     * BASE - QWERTY con Home Row Mods Bilaterales (GACS) + Physical Modifiers
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * | ESC  |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  | Bspc |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
      * | Tab  |   Q  |   W  |   E  |   R  |   T  |                    |   Y  |   U  |   I  |   O  |   P  |  ´¨  |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * | Mayus| A/GUI| S/Alt| D/Ctl| F/Sft|   G  |-------.    ,-------| H    | J/Sft| K/Ctl| L/Alt| Ñ/GUI| Enter|
+     * | Shift| A/GUI| S/Alt| D/Ctl| F/Sft|   G  |-------.    ,-------| H    | J/Sft| K/Ctl| L/Alt| Ñ/GUI| Enter|
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-     * |LShift|   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  ,;  |  .:  |  -_  |RShift|
+     * | Ctrl |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  ,;  |  .:  |  -_  |RShift|
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            | LCtrl| Win  | LAlt |Space | /LOWER  /       \RAISE \  |Space | RAlt | Win  | RCtrl|
+     *            | Ctrl | Win  | Alt  |Shift | /LOWER  /       \RAISE \  |Space | RAlt | Win  | RCtrl|
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -51,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
             KC_LSFT, HRM_A,   HRM_S,   HRM_D,   HRM_F,   KC_G,                      KC_H,    HRM_J,   HRM_K,   HRM_L,   HRM_SCLN, KC_ENT,
             KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                              KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,  MO(_LOWER), MO(_RAISE), KC_SPC, KC_RALT, KC_RGUI, KC_RCTL
+                              KC_LCTL, KC_LGUI, KC_LALT, KC_LSFT,  MO(_LOWER), MO(_RAISE), KC_SPC, KC_RALT, KC_RGUI, KC_RCTL
             ),
 
     /* LOWER - Navegación y Media
@@ -76,25 +76,25 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
             ),
 
-    /* RAISE - Símbolos y Números
+    /* RAISE - Símbolos optimizados para programación
      * ,-----------------------------------------.                    ,-----------------------------------------.
-     * |  |°  |   !  |   @  |   #  |   $  |   %  |                    |   &  |   /  |   (  |   )  |   =  | Bspc |
+     * |  !   |   @  |   #  |   $  |   %  |   &  |                    |   /  |   (  |   )  |   =  |   -  |   _  |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * |      |   1  |   2  |   3  |   4  |   5  |                    |   6  |   7  |   8  |   9  |   0  |  ¿   |
+     * |      |   [  |   ]  |   {  |   }  |   =  |                    |   +  |   \  |   |  |   '  |   `  |   ~  |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * |      |   <  |   >  |   {  |   }  |   `  |-------.    ,-------|   ´  |   +  |   *  |   -  |   '  |  ¡   |
+     * |      |   <  |   >  |   (  |   )  |   *  |-------.    ,-------|   ´  |   "  |   ¿  |   ¡  |   ^  | Bspc |
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-     * |      |   [  |   ]  |   (  |   )  |   ~  |-------|    |-------|   ^  |   \  |   |  |   _  |   ?  |      |
+     * |      | {AG} | }AG} | \AltG| ^AltG|  ?   |-------|    |-------|   1  |   2  |   3  |   4  |   5  |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
      *            |      |      |      |      | /LOWER  /       \RAISE \  |      |      |      |      |
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
     [_RAISE] = LAYOUT(
-            KC_GRV,  S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5),                   S(KC_6), S(KC_7), S(KC_8), S(KC_9), S(KC_0), KC_BSPC,
-            XXXXXXX, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,                      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_EQL,
-            XXXXXXX, KC_NUBS, S(KC_NUBS), KC_QUOT, KC_NUHS, KC_LBRC,                KC_LBRC, KC_RBRC, S(KC_RBRC), KC_SLSH, KC_MINS, S(KC_EQL),
-            XXXXXXX, RALT(KC_LBRC), RALT(KC_NUHS), S(KC_8), S(KC_9), RALT(KC_RBRC), XXXXXXX, XXXXXXX, S(KC_LBRC), KC_GRV, S(KC_GRV), S(KC_SLSH), S(KC_MINS), XXXXXXX,
+            S(KC_1), S(KC_2), S(KC_3), S(KC_4), S(KC_5), S(KC_6),                   S(KC_7), S(KC_8), S(KC_9), S(KC_0), KC_SLSH, S(KC_SLSH),
+            XXXXXXX, RALT(KC_LBRC), RALT(KC_NUHS), KC_QUOT, KC_NUHS, S(KC_0),       KC_RBRC, KC_NUBS, S(KC_NUBS), KC_MINS, KC_LBRC, RALT(KC_RBRC),
+            XXXXXXX, KC_NUBS, S(KC_NUBS), S(KC_8), S(KC_9), S(KC_RBRC),             KC_LBRC, S(KC_2), KC_EQL, S(KC_EQL), S(KC_LBRC), KC_BSPC,
+            XXXXXXX, RALT(KC_LBRC), RALT(KC_RBRC), RALT(KC_QUOT), RALT(KC_NUHS), S(KC_MINS), XXXXXXX, XXXXXXX, KC_1, KC_2, KC_3, KC_4, KC_5, XXXXXXX,
                               _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
             ),
 
@@ -220,12 +220,12 @@ static const char PROGMEM yka_logo[] = {
 
 bool oled_task_user(void) {
     if (is_keyboard_master()) {
-        oled_write_P(PSTR("Sof\n-----\nLayer\n"), false);
+        oled_write_P(PSTR("Sofv1\n-----\n\nLayer\n"), false);
         switch (get_highest_layer(layer_state)) {
             case _BASE:   oled_write_ln_P(PSTR("BASE"), false); break;
-            case _LOWER:  oled_write_ln_P(PSTR("NAV"), false); break;
-            case _RAISE:  oled_write_ln_P(PSTR("SYM"), false); break;
-            case _ADJUST: oled_write_ln_P(PSTR("SYS"), false); break;
+            case _LOWER:  oled_write_ln_P(PSTR("LOWER"), false); break;
+            case _RAISE:  oled_write_ln_P(PSTR("RAISE"), false); break;
+            case _ADJUST: oled_write_ln_P(PSTR("ADJ"), false); break;
             default:      oled_write_ln_P(PSTR("???"), false);
         }
     } else {
