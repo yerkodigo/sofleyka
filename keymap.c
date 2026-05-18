@@ -11,7 +11,7 @@
 // ============================================================================
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 0
-#define VERSION_PATCH 0
+#define VERSION_PATCH 1
 
 // Definición de capas
 enum sofle_layers {
@@ -55,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
      * | Ctrl |   Z  |   X  |   C  |   V  |   B  |-------|    |-------|   N  |   M  |  ,;  |  .:  |  -_  |RShift|
      * `-----------------------------------------/       /     \      \-----------------------------------------'
-     *            | Ctrl | Win  | Alt  |Shift | /LOWER  /       \RAISE \  |Space | RAlt | Win  | RCtrl|
+     *            | Ctrl | Win  | Alt  |Space | /LOWER  /       \RAISE \  |Space | RAlt | Win  | RCtrl|
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
      *            `----------------------------------'           '------''---------------------------'
      */
@@ -64,18 +64,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
             KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                      KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC,
             KC_LSFT, HRM_A,   HRM_S,   HRM_D,   HRM_F,   KC_G,                      KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_ENT,
             KC_LCTL, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    XXXXXXX, XXXXXXX, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT,
-                              KC_LCTL, KC_LGUI, KC_LALT, KC_LSFT,  MO(_LOWER), MO(_RAISE), KC_SPC, KC_RALT, KC_RGUI, KC_RCTL
+                              KC_LCTL, KC_LGUI, KC_LALT, KC_SPC,  MO(_LOWER), MO(_RAISE), KC_SPC, KC_RALT, KC_RGUI, KC_RCTL
             ),
 
     /* LOWER - Navegación y Media
      * ,-----------------------------------------.                    ,-----------------------------------------.
      * |  |   |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | Del  |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * |      | F11  | F12  |      |      |      |                    | Home | PgDn | PgUp | End  | Ins  |      |
+     * | Tab  | F11  | F12  |      |      |      |                    | Home | PgDn | PgUp | End  | Ins  |      |
      * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
-     * |      | GUI  | Alt  | Ctrl | Shift|      |-------.    ,-------|  ←   |  ↓   |  ↑   |  →   |      |      |
+     * | Shift| GUI  | Alt  | Ctrl | Shift|      |-------.    ,-------|  ←   |  ↓   |  ↑   |  →   |      |      |
      * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
-     * |      |      |      |      |      |      |-------|    |-------|      | Mute | Vol- | Vol+ |      |      |
+     * | Ctrl |      |      |      |      |      |-------|    |-------|      | Mute | Vol- | Vol+ |      |      |
      * `-----------------------------------------/       /     \      \-----------------------------------------'
      *            | Ctrl | Win  | Alt  |Shift | /LOWER  /       \RAISE \  |Space | RAlt | Win  | RCtrl|
      *            |      |      |      |      |/       /         \      \ |      |      |      |      |
@@ -83,9 +83,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      */
     [_LOWER] = LAYOUT(
             KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,                     KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_DEL,
-            XXXXXXX, KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  XXXXXXX,
-            XXXXXXX, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
-            XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,
+            KC_TAB,  KC_F11,  KC_F12,  XXXXXXX, XXXXXXX, XXXXXXX,                   KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,  XXXXXXX,
+            KC_LSFT, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,                   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
+            KC_LCTL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, XXXXXXX,
                               KC_LCTL, KC_LGUI, KC_LALT, KC_LSFT, _______, _______, KC_SPC,  KC_RALT, KC_RGUI, KC_RCTL
             ),
 
